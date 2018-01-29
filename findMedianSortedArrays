@@ -1,0 +1,38 @@
+//Input pass in two arrays
+//output : median of the two arrays
+
+//concat arrays
+//sort array
+//divide length by 2 and round to lowest whole number
+//that is the index value of the pivot point, 
+//then get next value and pass it to median function
+//Set conditional statement to check if array length is even or odd
+//if even,
+function findMedian(val1, val2){
+  return (val2+val1)/2;
+}
+var findMedianSortedArrays = function(nums1, nums2) {
+  if(nums1.length ===0 && nums2.length ===0){
+    return "Undefined: Both values are empty";
+  }
+  
+  var median = null;
+  var newArray = nums1.concat(nums2);
+  newArray = newArray.sort(function(a,b){
+    return a-b;
+  });
+  if(newArray.length %2 === 0){
+    var pivRight = newArray[((newArray.length)/2)-1];
+    var pivLeft = newArray[((newArray.length)/2)];
+    median = findMedian(pivRight, pivLeft);
+  }else{
+    var midPnt = Math.floor((newArray.length)/2);
+    median = newArray[midPnt];
+  }
+  return median;
+
+};
+
+console.log(findMedianSortedArrays([1,2,3,4,5,6,7,8,9], [10]))
+console.log(findMedianSortedArrays([1,2], [5]))
+console.log(findMedianSortedArrays([], []))
